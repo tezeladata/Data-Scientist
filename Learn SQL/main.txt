@@ -1,0 +1,35 @@
+A database is a set of data stored in a computer. This data is usually structured into tables. Tables can grow large and have a multitude of columns and records
+
+SQL (pronounced “S-Q-L” or “sequel”) allows you to write queries which define the subset of data you are seeking. Unlike Excel and Sheets, your computer and SQL will handle how to get the data; you can focus on what data you would like. You can save these queries, refine them, share them, and run them on different databases.
+
+
+Not all users who browse on the website will find something that they like enough to checkout, and not all users who begin the checkout process will finish entering their payment information to make a purchase.
+This type of multi-step process where some users leave at each step is called a funnel.
+
+A churn rate is the percent of subscribers to a monthly service who have canceled. For example, in January, let’s say Codecademy has 1,000 customers. In February, 200 learners sign up, and 250 cancel.
+
+The churn rate for February would be:
+cancellations / total subscribers = 250 / (1000+200) = 20.8%
+
+
+A relational database is a type of database. It uses a structure that allows us to identify and access data in relation to another piece of data in the database. Often, data in a relational database is organized into tables.
+
+
+A relational database management system (RDBMS) is a program that allows you to create, update, and administer a relational database. Most relational database management systems use the SQL language to access the database.
+
+
+SQL (Structured Query Language) is a programming language used to communicate with data stored in a relational database management system. SQL syntax is similar to the English language, which makes it relatively easy to write, read, and interpret.
+Many RDBMSs use SQL (and variations of SQL) to access the data in tables. For example, SQLite is a relational database management system. SQLite contains a minimal set of SQL commands (which are the same across all RDBMSs). Other RDBMSs may use other variants.
+
+
+SQLite is a database engine. It is software that allows users to interact with a relational database. In SQLite, a database is stored in a single file — a trait that distinguishes it from other database engines. This fact allows for a great deal of accessibility: copying a database is no more complicated than copying the file that stores the data, sharing a database can mean sending an email attachment.
+
+A relational database is a database that organizes information into one or more tables.
+A table is a collection of data organized into rows and columns. Tables are sometimes referred to as relations. 
+
+
+All data stored in a relational database is of a certain data type. Some of the most common data types are:
+INTEGER, a positive or negative whole number
+TEXT, a text string
+DATE, the date formatted as YYYY-MM-DD
+REAL, a decimal value

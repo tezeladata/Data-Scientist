@@ -1,0 +1,25 @@
+A statement is text that the database recognizes as a valid command. Statements always end in a semicolon ;.
+
+CREATE TABLE table_name (
+   column_1 data_type, 
+   column_2 data_type, 
+   column_3 data_type
+);
+
+CREATE TABLE is a clause. Clauses perform specific tasks in SQL. By convention, clauses are written in capital letters. Clauses can also be referred to as commands.
+
+table_name refers to the name of the table that the command is applied to.
+
+(column_1 data_type, column_2 data_type, column_3 data_type) is a parameter. A parameter is a list of columns, data types, or values that are passed to a clause as an argument. Here, the parameter is a list of column names and the associated data type.
+
+
+We can use the INSERT statement when you want to add new records. The statement below enters a record for Justin Bieber into the celebs table.
+
+
+INSERT INTO celebs (id, name, age) 
+VALUES (1, 'Justin Bieber', 29);
+INSERT INTO is a clause that adds the specified row or rows.
+celebs is the table the row is added to.
+(id, name, age) is a parameter identifying the columns that data will be inserted into.
+VALUES is a clause that indicates the data being inserted.
+(1, 'Justin Bieber', 29) is a parameter identifying the values being inserted.
