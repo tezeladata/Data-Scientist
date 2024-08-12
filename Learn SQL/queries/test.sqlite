@@ -1,0 +1,116 @@
+CREATE TABLE movies(
+	name TEXT
+	genre TEXT
+	year INTEGER
+);
+
+INSERT INTO movies(name, genre, year)
+VALUES("film", "filmatic", 2025);
+
+INSERT INTO movies(name, genre, year)
+VALUES("film2", "filmatic", 2025);
+
+INSERT INTO movies(name, genre, year)
+VALUES("film", "filmatic", 2025);
+
+
+SELECT DISTINCT name 
+FROM movies;
+
+
+
+
+INSERT INTO movies(name, genre, year)
+VALUES("film3", "filmatic", 205);
+
+INSERT INTO movies(name, genre, year)
+VALUES("film4", "filmatic", 225);
+
+INSERT INTO movies(name, genre, year)
+VALUES("film5", "filmatic", 225);
+
+
+SELECT *
+FROM movies
+WHERE year < 2000;
+
+
+
+
+INSERT INTO movies(name, genre, year)
+VALUES("film3", "filmatic", 1101);
+
+INSERT INTO movies(name, genre, year)
+VALUES("film4", "filmatic", 1101);
+
+INSERT INTO movies(name, genre, year)
+VALUES("film5", "filmatic", 1101);
+
+SELECT *
+FROM movies
+WHERE year like '1_01';
+
+
+
+
+
+
+
+INSERT INTO movies(name, genre, year)
+VALUES("onefilmone", "filmatic", 205);
+
+INSERT INTO movies(name, genre, year)
+VALUES("twofilmtwo", "filmatic", 225);
+
+INSERT INTO movies(name, genre, year)
+VALUES("threefilmthree", "filmatic", 225);
+
+SELECT * 
+FROM movies
+WHERE name Like '%one'
+
+
+
+
+
+
+
+INSERT INTO movies(name, genre, year)
+VALUES(NULL, "filmatic", 205);
+
+INSERT INTO movies(name, genre, year)
+VALUES(NULL, "filmatic", 225);
+
+INSERT INTO movies(name, genre, year)
+VALUES(NULL, "filmatic", 225);
+
+SELECT *
+FROM movies
+WHERE name IS NULL;
+
+
+
+
+SELECT *
+FROM movies
+WHERE year BETWEEN 0 AND 300;
+
+
+
+SELECT *
+FROM movies
+WHERE name BETWEEN "f" AND "g";
+
+
+
+SELECT *
+FROM movies
+WHERE year BETWEEN 2000 AND 2500
+	and name = 'film';
+
+
+
+SELECT *
+FROM movies
+WHERE name like "%one"
+	or year > 2000;
