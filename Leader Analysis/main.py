@@ -16,7 +16,7 @@ def visualization(data, x_head, title):
     plt.grid(axis="x", lw=1)
 
     # Font size
-    plt.yticks(fontsize=7)
+    plt.yticks(fontsize=10)
 
     plt.show()
 
@@ -142,3 +142,42 @@ def cor1(data):
     return sorted(all_res, key=lambda x: x[1])
 
 visualization(cor1(all_data), "მაჩვენებელი დაბალი - C მაღალი, fine per student (fps) დაბალი. მაჩვენებელი მაღალი - C დაბალი, fps მაღალი", "C correlation to fine per student")
+
+
+'''
+conscientiousness correlation to final fine - fps
+'''
+# def cor2(data):
+#     all_res = []
+
+#     for i in data:
+#         name = i[0][0] 
+#         c = i[0][1]["C"] 
+#         ff = i[1][1]  
+
+#         # Define thresholds for high/low values
+#         c_threshold = 75
+#         ff_threshold = 25
+
+#         # ZeroDivisionError
+#         if ff == 0:
+#             if c >= c_threshold:
+#                 result = c * 1.5
+#             else:
+#                 result = c / 2  
+#         else:
+#             if c <= c_threshold and ff >= ff_threshold:
+#                 result = (c * ff) * 0.5   # Strong correlation
+#             elif c >= c_threshold and ff >= ff_threshold:
+#                 result = (c * ff) ** 0.5  # Moderate correlation
+#             elif c < c_threshold and ff >= ff_threshold:
+#                 result = ff / c * 0.5  # Weak correlation
+#             else:
+#                 result = (c * ff) ** 0.5 # Moderate correlation
+
+#         all_res.append([name, result])
+
+#     return sorted(all_res, key=lambda x: x[1])
+
+# visualization(cor2(all_data), "მაჩვენებელი დაბალი - C მაღალი, final fine (ff) დაბალი. მაჩვენებელი მაღალი - C დაბალი, ff მაღალი", "C correlation to final fine")
+print(cor2(all_data))
