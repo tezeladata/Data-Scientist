@@ -1,0 +1,85 @@
+CREATE TABLE fake_apps (
+	id INTEGER,
+	name TEXT,
+	category TEXT,
+	downloads INTEGER,
+	price INTEGER
+)
+
+INSERT INTO fake_apps (id, name, category, downloads, price)
+VALUES 
+(3, 'siliconphase', 'Productivity', 17193, 0.0),
+(6, 'Donzolab', 'Education', 4259, 0.99),
+(10, 'Ittechi', 'Reference', 3874, 0.0),
+(13, 'Subdrill', 'Education', 7132, 1.99),
+(14, 'Anzoom', 'Health & Fitness', 6941, 14.99),
+(21, 'kanity', 'Health & Fitness', 2299, 0.0),
+(25, 'Zathcare', 'Books', 16281, 2.99),
+(30, 'Basecode', 'Sports', 21203, 3.99),
+(45, 'Hayholding', 'Medical', 15845, 14.99),
+(59, 'Sailflex', 'Productivity', 21984, 0.99),
+(60, 'waretam', 'Catalogs', 31087, 2.99),
+(62, 'Donelectrics', 'News', 6650, 1.99),
+(81, 'sonelectrics', 'Entertainment', 9297, 1.99),
+(89, 'Zoodom', 'Food & Drink', 29619, 14.99);
+(94, 'Quohouse', 'Lifestyle', 4109, 0.0),
+(95, 'Quotetech', 'Health & Fitness', 24934, 0.0),
+(104, 'Funtexon', 'Utilities', 11229, 0.99),
+(108, 'Ozerphase', 'Navigation', 14881, 0.0),
+(109, 'Kintonflex', 'Catalogs', 28705, 0.0),
+(110, 'Tamptom', 'Education', 5918, 2.99),
+(122, 'Whitetexon', 'Games', 30959, 0.0),
+(123, 'Lanela', 'Business', 21116, 1.99),
+(126, 'Ozerquote', 'Lifestyle', 19422, 3.99),
+(128, 'Unosantech', 'Finance', 15659, 0.99),
+(130, 'Canplus', 'Lifestyle', 22923, 1.99),
+(132, 'Mathzoom', 'Books', 30862, 1.99),
+(143, 'Canetouch', 'Books', 29463, 0.99),
+(156, 'Lexilane', 'News', 7630, 0.99),
+(157, 'Sunzoomron', 'Reference', 28861, 0.99),
+(159, 'Sailline', 'Sports', 9340, 0.0),
+(163, 'Gogoware', 'Games', 7287, 0.0),
+(166, 'bigzap', 'Games', 20126, 0.0),
+(175, 'O-electronics', 'Music', 2469, 0.0),
+(181, 'Flexlane', 'Navigation', 13576, 1.99),
+(182, 'Gogo-media', 'Reference', 17242, 2.99),
+(185, 'santech', 'Health & Fitness', 21359, 1.99),
+(199, 'Mediajob', 'Games', 21821, 0.99),
+(200, 'Freelamfax', 'Catalogs', 29513, 2.99),
+(212, 'Superfan', 'Games', 2791, 0.99),
+(216, 'Bamgreen', 'Utilities', 2212, 0.0),
+(222, 'Tincan', 'Navigation', 17519, 1.99),
+(223, 'Konhow', 'Sports', 11789, 0.0),
+(226, 'alphalux', 'Books', 25956, 0.99),
+(233, 'Lamsoncode', 'Education', 3910, 0.99),
+(234, 'Vaiatamace', 'Productivity', 28473, 0.0),
+(245, 'Planetquote', 'Finance', 24163, 1.99),
+(248, 'Zotzenhow', 'Productivity', 15641, 0.0),
+(257, 'Duolux', 'Entertainment', 6046, 1.99),
+(258, 'Zummaline', 'Travel', 26779, 0.99),
+(259, 'E-planet', 'Health & Fitness', 28069, 14.99),
+(272, 'superdrill', 'Business', 15195, 1.99),
+(277, 'Fixcode', 'Medical', 26243, 0.0),
+(282, 'Unoredware', 'Education', 15769, 2.99),
+(284, 'Ladex', 'Food & Drink', 30789, 14.99),
+(287, 'Duokix', 'Medical', 15550, 0.99),
+(292, 'Biostrip', 'Games', 17887, 0.0),
+(298, 'Mathcane', 'Navigation', 10535, 2.99);
+
+
+SELECT COUNT(*)
+FROM fake_apps;
+
+
+SELECT COUNT(*)
+FROM fake_apps
+WHERE price = 0;
+
+
+SELECT SUM(downloads)
+FROM fake_apps;
+
+
+SELECT SUM(downloads)
+FROM fake_apps
+WHERE category = 'Productivity';
