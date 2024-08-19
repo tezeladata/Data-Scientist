@@ -72,7 +72,22 @@ leaders = [
 ["Irakli Kvinchia", {"O": 69, "C": 81, "E": 60, "A": 79, "N": 46}],
 ["Ucha Khuberishvili", {"O": 60, "C": 85, "E": 54, "A": 85, "N": 35}],
 ["Alex Jimshiashvili", {"O": 87.5, "C": 100, "E": 79, "A": 52, "N": 21}],
-["Giorgi Khmaladze", {"O": 69, "C": 75, "E": 50, "A": 79, "N": 75}]
+["Giorgi Khmaladze", {"O": 69, "C": 75, "E": 50, "A": 79, "N": 75}],
+["Nika Gelenidze", {"O": 75, "C": 94, "E": 67, "A": 50, "N": 52}],
+["Leqso Leverashvili", {"O": 73, "C": 92, "E": 67, "A": 83, "N": 42}],
+["Davit Janashia", {"O": 62.5, "C": 62.5, "E": 50, "A": 65, "N": 48}],
+["Nia Khoperia", {"O": 48, "C": 54, "E": 56, "A": 67, "N": 67}],
+["Roba Amonashvili", {"O": 71, "C": 52, "E": 48, "A": 71, "N": 62.5}],
+["Barbare Tinikashvili", {"O": 60, "C": 81, "E": 54, "A": 65, "N": 31}],
+["Jeko Tarieladze", {"O": 62.5, "C": 50, "E": 46, "A": 81, "N": 85}],
+["Gigi Adamia", {"O": 90, "C": 90, "E": 75, "A": 54, "N": 46}],
+["Davit Berkacashvili", {"O": 79, "C": 71, "E": 56, "A": 69, "N": 54}],
+["Nika Shavadze", {"O": 65, "C": 83, "E": 48, "A": 65, "N": 33}],
+["Tato Bukhrashvili", {"O": 62.5, "C": 58, "E": 50, "A": 54, "N": 60}],
+["Ana Grigolia", {"O": 75, "C": 56, "E": 37.5, "A": 92, "N": 42}],
+["Giorgi Melqadze", {"O": 67, "C": 54, "E": 42, "A": 65, "N": 54}],
+["Luka Oqruashvili", {"O": 71, "C": 58, "E": 42, "A": 71, "N": 54}],
+["Gigi Bendeliani", {"O": 71, "C": 67, "E": 54, "A": 60, "N": 44}]
 ]
 
 github_data = [
@@ -87,7 +102,12 @@ github_data = [
     [0, 0, 39, 7], [3, 45, 27, 15], [0, 0, 6, 15], [3.285714286, 23, 30, 7], 
     [0.8, 16, 2, 20], [1, 19, 13, 18], [1, 16, 15, 10], [0.9333333333, 14, 14, 13], 
     [1.125, 9, 17, 8], [1.25, 35, 11, 28], [3.28, 82, 21, 25], [0, 0, 40, 0], 
-    [0, 0, 41, 0], [0, 0, 42, 0], [0, 0, 43, 0], [0, 0, 44, 0]
+    [0, 0, 41, 0], [0, 0, 42, 0], [0, 0, 43, 0], [0, 0, 44, 0],
+    # ex leaders
+    [3.055555555555556, 82.5, 45, 27], [5.5, 22, 46, 4], [5.75, 172.5, 47, 30], [0.8666666666666667, 15, 48, 13],
+    [2.25, 9, 49, 4], [2.088235294117647, 35.5, 49, 17], [1.4, 21, 50, 15], [1.166666666666667, 3.5, 51, 3],
+    [0.6875, 11, 52, 16], [0 , 0, 52, 3], [4.910714285714286, 137.5, 53, 28], [13.21428571428571, 92.5, 53, 7], 
+    [1.866666666666667, 28, 54, 15], [2.388888888888889, 43, 55, 18], [0, 0, 56, 2]
 ]
 
 
@@ -104,7 +124,7 @@ def all(data, var, var2):
     all_res = []
 
     for i in data:
-        if i[1][0] > 0  and i[1][1] < 100 and i[1][3] > 5:
+        if i[1][0] > 0 and i[1][1] < 100 and i[1][3] > 5 and i[0]!= "Luka Akofiani":
             name = i[0][0] 
             ocean_var = i[0][1][f"{var}"] 
             match var2:
@@ -119,14 +139,14 @@ def all(data, var, var2):
 
 # good
 # visualization(all(all_data, "E", "sisl"), "extraversion", "standing in sorted list")
-# visualization(all(all_data, "E", "mc"), "extraversion", "member count")
-# visualization(all(all_data, "E", "fps"), "extraversion", "fine per student")
-# visualization(all(all_data, "O", "ff"), "openness", "final fine")
-# visualization(all(all_data, "A", "ff"), "agreeableness", "final fine")
-# visualization(all(all_data, "A", "fps"), "agreeableness", "fine per student")
+visualization(all(all_data, "E", "mc"), "extraversion", "member count")
+visualization(all(all_data, "E", "fps"), "extraversion", "fine per student")
+visualization(all(all_data, "O", "ff"), "openness", "final fine")
+visualization(all(all_data, "A", "ff"), "agreeableness", "final fine")
+visualization(all(all_data, "A", "fps"), "agreeableness", "fine per student")
 # visualization(all(all_data, "A", "sisl"), "agreeableness", "standing in sorted list")
-# visualization(all(all_data, "A", "mc"), "agreeableness", "member count")
-# visualization(all(all_data, "N", "ff"), "neuroticism", "final fine")
+visualization(all(all_data, "A", "mc"), "agreeableness", "member count")
+visualization(all(all_data, "N", "ff"), "neuroticism", "final fine")
 # visualization(all(all_data, "N", "sisl"), "neuroticism", "standing in sorted list")
 
 # bad
@@ -140,38 +160,3 @@ def all(data, var, var2):
 # visualization(all(all_data, "C", "mc"), "conscientiousness", "member count")
 # visualization(all(all_data, "N", "fps"), "neuroticism", "fine per student")
 # visualization(all(all_data, "N", "mc"), "neuroticism", "member count")
-
-
-
-'''
-Extra
-'''
-# def two_ocean_data(data, var2):
-#     all_res = []
-
-#     for i in data:
-#         if i[1][0] > 0 and i[1][1] < 150 and i[1][4] > 5:
-#             name = i[0][0] 
-#             ocean_var = (i[0][1]["O"] * i[0][1]["C"]) ** 0.5
-#             match var2:
-#                 case "fps": y_row_data = i[1][0]
-#                 case "ff": y_row_data = i[1][1]
-#                 case "nwic": y_row_data = i[1][2]
-#                 case "sisl": y_row_data = i[1][3]
-#                 case "mc": y_row_data = i[1][4]
-
-#             all_res.append([name, ocean_var, y_row_data])
-
-#     return sorted(all_res, key=lambda x: x[1])
-# def two_github_data(data):
-#     all_res = []
-
-#     for i in data:
-#         if i[1][0] > 0 and i[1][1] < 150 and i[1][3] > 5:
-#             name = i[0][0] 
-#             x_data = i[1][3]
-#             y_data = i[1][0]
-
-#             all_res.append([name, x_data, y_data])
-
-#     return sorted(all_res, key=lambda x: x[1])
