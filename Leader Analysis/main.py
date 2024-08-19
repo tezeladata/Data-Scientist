@@ -1,32 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-def visualization(data, x_head, y_head):
-    names = [item[0].split(" ")[1] for item in data]
-    x_values = [item[1] for item in data]
-    y_values = [item[2] for item in data]
-
-    # Plotting
-    plt.figure(figsize=(10, 8))
-    plt.scatter(x_values, y_values, color='#004225')
-
-    for i, name in enumerate(names):
-        plt.text(x_values[i], y_values[i], name, fontsize=10, ha='right')
-
-    # Adding linear regression line
-    m, b = np.polyfit(x_values, y_values, 1)  # Fit line: y = mx + b
-    plt.plot(x_values, np.array(x_values) * m + b, color='red', linestyle='--', linewidth=2)
-
-    plt.xlabel(x_head)
-    plt.ylabel(y_head)
-    plt.title("Leader analysis")
-    plt.grid(True)
-
-    plt.show()
-
-
-
-
 leaders = [
 ["Leader name", "here will be dictionary with OCEAN quiz scores"],
 ["Aleko Tirkia", {"O": 83, "C": 71, "E": 60, "A": 48, "N": 58}],
@@ -73,6 +47,7 @@ leaders = [
 ["Ucha Khuberishvili", {"O": 60, "C": 85, "E": 54, "A": 85, "N": 35}],
 ["Alex Jimshiashvili", {"O": 87.5, "C": 100, "E": 79, "A": 52, "N": 21}],
 ["Giorgi Khmaladze", {"O": 69, "C": 75, "E": 50, "A": 79, "N": 75}],
+# from here
 ["Nika Gelenidze", {"O": 75, "C": 94, "E": 67, "A": 50, "N": 52}],
 ["Leqso Leverashvili", {"O": 73, "C": 92, "E": 67, "A": 83, "N": 42}],
 ["Davit Janashia", {"O": 62.5, "C": 62.5, "E": 50, "A": 65, "N": 48}],
@@ -103,7 +78,7 @@ github_data = [
     [0.8, 16, 2, 20], [1, 19, 13, 18], [1, 16, 15, 10], [0.9333333333, 14, 14, 13], 
     [1.125, 9, 17, 8], [1.25, 35, 11, 28], [3.28, 82, 21, 25], [0, 0, 40, 0], 
     [0, 0, 41, 0], [0, 0, 42, 0], [0, 0, 43, 0], [0, 0, 44, 0],
-    # ex leaders
+    # from here
     [3.055555555555556, 82.5, 45, 27], [5.5, 22, 46, 4], [5.75, 172.5, 47, 30], [0.8666666666666667, 15, 48, 13],
     [2.25, 9, 49, 4], [2.088235294117647, 35.5, 49, 17], [1.4, 21, 50, 15], [1.166666666666667, 3.5, 51, 3],
     [0.6875, 11, 52, 16], [0 , 0, 52, 3], [4.910714285714286, 137.5, 53, 28], [13.21428571428571, 92.5, 53, 7], 
@@ -117,46 +92,64 @@ Combine leaders with their github data
 all_data = [[leaders[i], github_data[i]] for i in range(1, len(leaders))]
 
 
-'''
-correlation
-'''
+
+# Define the all function
 def all(data, var, var2):
     all_res = []
-
     for i in data:
-        if i[1][0] > 0 and i[1][1] < 100 and i[1][3] > 5 and i[0]!= "Luka Akofiani":
+        if i[1][0] > 0 and i[1][1] < 100 and i[1][3] > 5 and i[0] != "Luka Akofiani":
             name = i[0][0] 
-            ocean_var = i[0][1][f"{var}"] 
+            ocean_var = i[0][1][f"{var}"]
             match var2:
                 case "fps": y_row_data = i[1][0]
                 case "ff": y_row_data = i[1][1]
                 case "sisl": y_row_data = i[1][2]
                 case "mc": y_row_data = i[1][3]
-
             all_res.append([name, ocean_var, y_row_data])
-
     return sorted(all_res, key=lambda x: x[1])
 
-# good
-# visualization(all(all_data, "E", "sisl"), "extraversion", "standing in sorted list")
-visualization(all(all_data, "E", "mc"), "extraversion", "member count")
-visualization(all(all_data, "E", "fps"), "extraversion", "fine per student")
-visualization(all(all_data, "O", "ff"), "openness", "final fine")
-visualization(all(all_data, "A", "ff"), "agreeableness", "final fine")
-visualization(all(all_data, "A", "fps"), "agreeableness", "fine per student")
-# visualization(all(all_data, "A", "sisl"), "agreeableness", "standing in sorted list")
-visualization(all(all_data, "A", "mc"), "agreeableness", "member count")
-visualization(all(all_data, "N", "ff"), "neuroticism", "final fine")
-# visualization(all(all_data, "N", "sisl"), "neuroticism", "standing in sorted list")
+# Define the visualization function
+def visualization(data_before, data_after, x_head, y_head):
+    names_before = [item[0].split(" ")[1] for item in data_before]
+    x_values_before = [item[1] for item in data_before]
+    y_values_before = [item[2] for item in data_before]
+    
+    names_after = [item[0].split(" ")[1]  for item in data_after]
+    x_values_after = [item[1] for item in data_after]
+    y_values_after = [item[2] for item in data_after]
 
-# bad
-# visualization(all(all_data, "E", "ff"), "extraversion", "final fine")
-# visualization(all(all_data, "O", "fps"), "openness", "fine per student")
-# visualization(all(all_data, "O", "sisl"), "openness", "standing in sorted list")
-# visualization(all(all_data, "O", "mc"), "openness", "member count")
-# visualization(all(all_data, "C", "ff"), "conscientiousness", "final fine")
-# visualization(all(all_data, "C", "fps"), "conscientiousness", "fine per student")
-# visualization(all(all_data, "C", "sisl"), "conscientiousness", "standing in sorted list")
-# visualization(all(all_data, "C", "mc"), "conscientiousness", "member count")
-# visualization(all(all_data, "N", "fps"), "neuroticism", "fine per student")
-# visualization(all(all_data, "N", "mc"), "neuroticism", "member count")
+
+    plt.figure(figsize=(12, 8))
+    
+    plt.scatter(x_values_before, y_values_before, color='blue', label='Prev leaders', alpha=0.7)
+    for i, name in enumerate(names_before):
+        plt.text(x_values_before[i], y_values_before[i], name, fontsize=10, ha='right')
+
+
+    plt.scatter(x_values_after, y_values_after, color='green', label='Cur leaders', alpha=0.7)
+    for i, name in enumerate(names_after):
+        plt.text(x_values_after[i], y_values_after[i], name, fontsize=8, ha='left')
+
+
+    x_all = x_values_before + x_values_after
+    y_all = y_values_before + y_values_after
+    m, b = np.polyfit(x_all, y_all, 1)  
+    plt.plot(x_all, np.array(x_all) * m + b, color='red', linestyle='--', linewidth=2)
+
+    plt.xlabel(x_head)
+    plt.ylabel(y_head)
+    plt.title("Leader Analysis")
+    plt.grid(True)
+    plt.legend()
+    plt.show()
+
+
+
+split_index = 43  
+before_data = all_data[:split_index]
+after_data = all_data[split_index:]
+
+before_plot_data = all(before_data, 'C', 'mc')
+after_plot_data = all(after_data, 'C', 'mc')
+
+visualization(before_plot_data, after_plot_data, 'OCEAN Score - C', 'Member count (mc)')

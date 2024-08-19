@@ -85,3 +85,76 @@ Extra
 #             all_res.append([name, x_data, y_data])
 
 #     return sorted(all_res, key=lambda x: x[1])
+
+
+
+'''
+correlation
+'''
+# def all(data, var, var2):
+#     all_res = []
+
+#     for i in data:
+#         if i[1][0] > 0 and i[1][1] < 100 and i[1][3] > 5 and i[0]!= "Luka Akofiani":
+#             name = i[0][0] 
+#             ocean_var = i[0][1][f"{var}"] 
+#             match var2:
+#                 case "fps": y_row_data = i[1][0]
+#                 case "ff": y_row_data = i[1][1]
+#                 case "sisl": y_row_data = i[1][2]
+#                 case "mc": y_row_data = i[1][3]
+
+#             all_res.append([name, ocean_var, y_row_data])
+
+#     return sorted(all_res, key=lambda x: x[1])
+
+
+# def visualization(data, x_head, y_head):
+#     names = [item[0].split(" ")[1] for item in data]
+#     x_values = [item[1] for item in data]
+#     y_values = [item[2] for item in data]
+
+#     # Plotting
+#     plt.figure(figsize=(10, 8))
+#     plt.scatter(x_values, y_values, color='#004225')
+#     plt.scatter(x_values, y_values, color='#004225')
+
+#     for i, name in enumerate(names):
+#         plt.text(x_values[i], y_values[i], name, fontsize=10, ha='right')
+
+#     # Adding linear regression line
+#     m, b = np.polyfit(x_values, y_values, 1)  # Fit line: y = mx + b
+#     plt.plot(x_values, np.array(x_values) * m + b, color='red', linestyle='--', linewidth=2)
+
+#     plt.xlabel(x_head)
+#     plt.ylabel(y_head)
+#     plt.title("Leader analysis")
+#     plt.grid(True)
+
+#     plt.show()
+
+
+
+# good
+# visualization(all(all_data, "E", "sisl"), "extraversion", "standing in sorted list")
+# visualization(all(all_data, "E", "mc"), "extraversion", "member count")
+# visualization(all(all_data, "E", "fps"), "extraversion", "fine per student")
+# visualization(all(all_data, "O", "ff"), "openness", "final fine")
+# visualization(all(all_data, "A", "ff"), "agreeableness", "final fine")
+# visualization(all(all_data, "A", "fps"), "agreeableness", "fine per student")
+# visualization(all(all_data, "A", "sisl"), "agreeableness", "standing in sorted list")
+# visualization(all(all_data, "A", "mc"), "agreeableness", "member count")
+# visualization(all(all_data, "N", "ff"), "neuroticism", "final fine")
+# visualization(all(all_data, "N", "sisl"), "neuroticism", "standing in sorted list")
+
+# bad
+# visualization(all(all_data, "E", "ff"), "extraversion", "final fine")
+# visualization(all(all_data, "O", "fps"), "openness", "fine per student")
+# visualization(all(all_data, "O", "sisl"), "openness", "standing in sorted list")
+# visualization(all(all_data, "O", "mc"), "openness", "member count")
+# visualization(all(all_data, "C", "ff"), "conscientiousness", "final fine")
+# visualization(all(all_data, "C", "fps"), "conscientiousness", "fine per student")
+# visualization(all(all_data, "C", "sisl"), "conscientiousness", "standing in sorted list")
+# visualization(all(all_data, "C", "mc"), "conscientiousness", "member count")
+# visualization(all(all_data, "N", "fps"), "neuroticism", "fine per student")
+# visualization(all(all_data, "N", "mc"), "neuroticism", "member count")
