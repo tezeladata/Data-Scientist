@@ -114,3 +114,37 @@ SELECT *
 FROM movies
 WHERE name like "%one"
 	or year > 2000;
+
+
+
+SELECT name, year
+FROM movies
+ORDER BY name;
+
+
+SELECT name, year
+FROM movies
+ORDER BY year DESC;
+
+
+SELECT *
+FROM movies
+LIMIT 10;
+
+
+
+SELECT *
+FROM movies
+ORDER BY year ASC
+LIMIT 3;
+
+
+
+
+SELECT year,
+	CASE 
+		WHEN year > 2000 THEN 'new'
+		WHEN year > 1000 THEN 'Somewhat old ;D'
+		ELSE 'Dark ages'
+	END AS 'year dependency'
+FROM movies;
