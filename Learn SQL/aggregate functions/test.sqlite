@@ -83,3 +83,59 @@ FROM fake_apps;
 SELECT SUM(downloads)
 FROM fake_apps
 WHERE category = 'Productivity';
+
+
+SELECT max(downloads)
+FROM fake_apps;
+
+
+SELECT avg(downloads)
+FROM fake_apps;
+
+SELECT avg(price)
+FROM fake_apps;
+
+SELECT round(price, 0)
+FROM fake_apps;
+
+SELECT round(price, 2)
+FROM fake_apps;
+
+SELECT round(price, 3)
+FROM fake_apps
+ORDER BY price DESC;
+
+
+Select round(avg(price), 2)
+from fake_apps;
+
+Select round(avg(downloads), 2)
+from fake_apps
+Where price = 0;
+
+
+SELECT price, COUNT(*) 
+FROM fake_apps
+GROUP BY price;
+
+
+SELECT price, COUNT(*) 
+FROM fake_apps
+WHERE downloads > 20000
+GROUP BY price;
+
+
+SELECT category, sum(downloads), price
+FROM fake_apps
+GROUP BY category;
+
+
+SELECT category, price, avg(downloads)
+from fake_apps
+Group by 1, 2;
+
+
+Select price, round(avg(downloads)), count(*)
+from fake_apps
+group by price
+having count(*) > 10;
