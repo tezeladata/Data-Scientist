@@ -1,0 +1,84 @@
+For instance, imagine that we’re running a magazine company where users can have different types of subscriptions to different products. Different subscriptions might have many different properties. Each customer would also have lots of associated information.
+
+
+
+Combining tables manually is time-consuming. Luckily, SQL gives us an easy sequence for this: it’s called a JOIN.
+
+If we want to combine orders and customers, we would type:
+
+SELECT *
+FROM orders
+JOIN customers
+  ON orders.customer_id = customers.customer_id;
+
+Let’s break down this command:
+
+The first line selects all columns from our combined table. If we only want to select certain columns, we can specify which ones we want.
+The second line specifies the first table that we want to look in, orders
+The third line uses JOIN to say that we want to combine information from orders with customers.
+The fourth line tells us how to combine the two tables. We want to match orders table’s customer_id column with customers table’s customer_id column.
+Because column names are often repeated across multiple tables, we use the syntax table_name.column_name to be sure that our requests for columns are unambiguous. In our example, we use this syntax in the ON statement, but we will also use it in the SELECT or any other statement where we refer to column names.
+
+
+
+What if we want to combine two tables and keep some of the un-matched rows?
+
+SQL lets us do this through a command called LEFT JOIN. A left join will keep all rows from the first table, regardless of whether there is a matching row in the second table.
+
+
+SELECT *
+FROM table1
+LEFT JOIN table2
+  ON table1.c2 = table2.c2;
+
+
+
+
+Primary keys have a few requirements:
+
+None of the values can be NULL.
+Each value must be unique (i.e., you can’t have two customers with the same customer_id in the customers table).
+A table can not have more than one primary key column.
+
+
+
+When the primary key for one table appears in a different table, it is called a foreign key.
+
+So customer_id is a primary key when it appears in customers, but a foreign key when it appears in orders.
+
+In this example, our primary keys all had somewhat descriptive names. Generally, the primary key will just be called id. Foreign keys will have more descriptive names.
+
+
+
+A more common usage of CROSS JOIN is when we need to compare each row of a table to a list of values.
+
+
+
+
+
+Sometimes we just want to stack one dataset on top of the other. Well, the UNION operator allows us to do that.
+
+
+SQL has strict rules for appending data:
+
+Tables must have the same number of columns.
+The columns must have the same data types in the same order as the first table.
+
+
+
+
+
+WITH previous_results AS (
+   SELECT ...
+   ...
+   ...
+   ...
+)
+SELECT *
+FROM previous_results
+JOIN customers
+  ON _____ = _____;
+
+The WITH statement allows us to perform a separate query (such as aggregating customer’s subscriptions)
+previous_results is the alias that we will use to reference any columns from the query inside of the WITH clause
+We can then go on to do whatever we want with this temporary table (such as join the temporary table with another table)

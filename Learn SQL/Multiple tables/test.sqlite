@@ -1,0 +1,129 @@
+CREATE TABLE orders (
+    order_id INT PRIMARY KEY,
+    customer_id INT,
+    subscription_id INT,
+    purchase_date DATE
+);
+
+INSERT INTO orders (order_id, customer_id, subscription_id, purchase_date) VALUES
+(1, 3, 2, '2017-10-01'),
+(2, 2, 4, '2017-09-01'),
+(3, 3, 4, '2017-01-26'),
+(4, 9, 9, '2017-04-01'),
+(5, 7, 5, '2017-01-25'),
+(6, 8, 2, '2017-01-18'),
+(7, 5, 8, '2017-11-01'),
+(8, 9, 5, '2017-01-26'),
+(9, 4, 4, '2017-01-25'),
+(10, 1, 7, '2017-01-26');
+
+
+
+CREATE TABLE subscriptions (
+    subscription_id INT PRIMARY KEY,
+    description TEXT,
+    price_per_month INT,
+    subscription_length TEXT
+);
+
+INSERT INTO subscriptions (subscription_id, description, price_per_month, subscription_length) VALUES
+(1, 'Politics Magazine', 10, '12 months'),
+(2, 'Politics Magazine', 11, '6 months'),
+(3, 'Politics Magazine', 12, '3 months'),
+(4, 'Fashion Magazine', 15, '12 months'),
+(5, 'Fashion Magazine', 17, '6 months'),
+(6, 'Fashion Magazine', 19, '3 months'),
+(7, 'Sports Magazine', 11, '12 months'),
+(8, 'Sports Magazine', 12, '6 months'),
+(9, 'Sports Magazine', 13, '3 months');
+
+
+
+CREATE TABLE customers (
+    customer_id INT PRIMARY KEY,
+    customer_name TEXT,
+    address TEXT
+);
+
+INSERT INTO customers (customer_id, customer_name, address) VALUES
+(1, 'Allie Rahaim', '123 Broadway'),
+(2, 'Jacquline Diddle', '456 Park Ave.'),
+(3, 'Lizabeth Letsche', '789 Main St.'),
+(4, 'Jessia Butman', '1 Columbus Ave.'),
+(5, 'Inocencia Goyco', '12 Amsterdam Ave.'),
+(6, 'Bethann Schraub', '29 Monticello'),
+(7, 'Janay Priolo', '81 Harrisburg'),
+(8, 'Ophelia Sturdnant', '31 Deerfield Ave.'),
+(9, 'Eryn Vilar', '56 Morton St.'),
+(10, 'Jina Farraj', '100 Bryan Ave.');
+
+
+
+SELECT *
+FROM orders
+JOIN subscriptions
+	ON orders.subscription_id = subscriptions.subscription_id
+WHERE subscriptions.description = 'Fashion Magazine';
+
+
+
+
+SELECT *
+FROM newspaper
+LEFT JOIN online
+  ON newspaper.id = online.id;
+
+
+SELECT *
+FROM newspaper
+LEFT JOIN online
+  ON newspaper.id = online.id
+WHERE online.id IS NULL;
+
+
+
+SELECT COUNT(*)
+FROM newspaper
+WHERE start_month <= 3 
+  AND end_month >= 3;
+
+SELECT *
+FROM newspaper
+CROSS JOIN months;
+
+
+SELECT *
+FROM newspaper
+CROSS JOIN months
+where start_month <= month AND end_month >= month;
+
+
+SELECT month,
+  COUNT(*)
+FROM newspaper
+CROSS JOIN months
+WHERE start_month <= month AND end_month >= month
+GROUP BY month;
+
+
+
+SELECT * 
+FROM newspaper 
+UNION 
+SELECT * 
+FROM online;
+
+
+
+
+
+WITH previous_query AS (
+SELECT customer_id,
+       COUNT(subscription_id) AS 'subscriptions'
+FROM orders
+GROUP BY customer_id)
+SELECT customers.customer_name,
+previous_query.subscriptions
+FROM previous_query
+JOIN customers
+	ON customers.customer_id = previous_query.customer_id;
