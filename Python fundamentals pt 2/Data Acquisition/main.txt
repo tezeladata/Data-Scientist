@@ -1,0 +1,53 @@
+Data can be acquired from many different sources. Broadly, they can be categorized into primary data and secondary data.
+
+Primary data is data collected by the individual or organization who will be doing the analysis. Examples include:
+
+Experiments (e.g., wet lab experiments like gene sequencing)
+Observations (e.g., surveys, sensors, in situ collection)
+Simulations (e.g., theoretical models like climate models)
+Scraping or compiling (e.g., webscraping, text mining)
+Secondary data is data collected by someone else and is typically published for public use. Most data you will use falls into this category. Examples include:
+
+Any primary data that was collected by someone else
+Institutionalized data banks (e.g., census, gene sequences)
+
+
+
+There is another subcategory of secondary data that can be called “pre-cleaned” data. These are datasets published by institutions like Kaggle that are already cleaned, filtered, and ready to use.
+
+While pre-cleaned data is undoubtedly easier to use, you lose some of the flexibility and control that working with unaltered, “raw” data offers. For example, if a cleaned dataset discarded certain fields or rows during the data processing step, there is no way of getting the information back. Nevertheless, pre-cleaned datasets are still popular, and that can be perfectly fine depending on the end goal.
+
+
+
+It is best practice to store data in a way that is most easily accessible for everyone. Generally, this means storing data in a non-proprietary and openly documented format, using standard character encodings (utf-8), and keeping data files uncompressed, if space allows. There are various methods, including online tools, that can be used to convert between formats if necessary.
+
+
+
+Secondary data can sometimes be obtained via an application programming interface (API). APIs are built around the HTTP request/response cycle. A client (you) sends a request for data to a website’s server through an API call. Then, the server searches its database and responds either with the data, or an error stating that the request cannot be fulfilled.
+
+API stands for Application Programming Interface and is a term used to describe specifications that allow applications to communicate with one another.
+
+APIs enable exchange of information, and can be a major source of value (utility, market dependence and revenue) to organizations. APIs are significant components in the evolution of applications because the technical ecosystem is built on top of APIs and leverages them to function and provide many services in use today.
+
+
+
+The for parameter can also be used in conjunction with in to specify data within a certain geographic area, such as all unified school districts within specific states: https://api.census.gov/data/2020/acs/acs5?get=NAME,B08303_001E&for=school%20district%20(unified):*&in=state:06,49.
+
+
+
+https://api.census.gov/data/2020/acs/acs5?get=NAME,B08303_001E,B08303_013E&for=state:36
+https://api.census.gov/data/2020/acs/acs5?get=NAME,B08303_001E,B08303_013E&for=county:*&in=state:36
+
+
+
+While JSON is a great universal format for data interchange, it might not be the ideal format in other aspects, such as readability. Instead, having the data in a tabular format (like a CSV) can make it much more human-readable and accessible. Therefore, being able to convert between file types is essential.
+
+There are several libraries in Python to work with different data formats. For example, to convert the Census data from JSON to CSV, we can use the built-in csv library
+
+
+
+We’ll use Python’s pandas library, which is designed for working with data (and will quickly become familiar to you). Start by importing the library and using the read_csv() function to read the CSV data into a DataFrame object
+
+
+
+By default, the first row of the CSV file is read in as the header row. We can use the .head() method to preview the first few rows of the DataFrame.
