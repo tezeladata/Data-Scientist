@@ -44,7 +44,7 @@ with open("users.csv", newline="") as new_csv:
 print(res, res2)
 
 
-# csv with different delimeter
+# csv with different delimiter
 with open("addresses.csv", newline="") as new_csv:
     dict1 = csv.DictReader(new_csv, delimiter=";")
     for row in dict1: print(row)
@@ -63,3 +63,31 @@ with open('output.csv', 'w') as output_csv:
   for item in big_list:
     output_writer.writerow(item)
 
+
+# Accessing JSON
+import json
+
+with open("purchase.json") as purchase_json:
+    purchase_data = json.load(purchase_json)
+
+print(purchase_data)
+for i in purchase_data: print(i)
+
+
+# writing json
+# First we create python dict
+turn_to_json = {
+  'eventId': 674189,
+  'dateTime': '2015-02-12T09:23:17.511Z',
+  'chocolate': 'Semi-sweet Dark',
+  'isTomatoAFruit': True
+}
+
+with open("res.json", "w") as res_json:
+    json.dump(turn_to_json, res_json)
+
+# Pt.2
+# Dict:
+res_dict = {"name": "a", "surname": "b", "age": 3.14}
+with open("res2.json", "w") as res_json:
+    json.dump(res_dict, res_json)
