@@ -5,9 +5,9 @@ with open("wages.json") as json_file:
     data = json.load(json_file)
 start_info = [[i["Name"], {"speed count sum": i["Speed 1 Count"] + i["Speed 2 Count"] * 2 + i["Speed 3 Count"] * 3, "Wage": i["Wage"]}, [i["Speed 1 Count"], i["Speed 2 Count"], i["Speed 3 Count"]]] for i in data]
 
-with open("wages2.json") as json_file2:
-    data2 = json.load(json_file2)
-second_info = [[i["Name"], {"speed count sum": i["Speed 1 count"] + i["Speed 2 count"] * 2 + i["Speed 3 count"] * 3, "Wage": i["Wage"]}, [i["Speed 1 count"], i["Speed 2 count"], i["Speed 3 count"]]] for i in data2]
+# with open("wages2.json") as json_file2:
+#     data2 = json.load(json_file2)
+# second_info = [[i["Name"], {"speed count sum": i["Speed 1 count"] + i["Speed 2 count"] * 2 + i["Speed 3 count"] * 3, "Wage": i["Wage"]}, [i["Speed 1 count"], i["Speed 2 count"], i["Speed 3 count"]]] for i in data2]
 
 '''
 speed count dependant renewing of wages
@@ -31,7 +31,6 @@ def generate_wages(matrix):
     for i in matrix:
         leader, speed_count, speeds = [i[0], {"Old wage": i[1]["Wage"], "Speeds": i[2]}], i[1]["speed count sum"], i[2]
 
-        # 7 good one
         # 6.75 best one
 
         if speed_count <= 20: wage_per_speed = 6.75
@@ -58,7 +57,7 @@ def generate_wages(matrix):
     return fin_info, f"Total wage increase is: {total_sum}"
 
 wage_one = generate_wages(start_info)
-wage_two = generate_wages(second_info)
+# wage_two = generate_wages(second_info)
 
 
 def display(matrix):
@@ -68,5 +67,5 @@ def display(matrix):
 display(wage_one[0])
 print(wage_one[1])
 print("\n\n")
-display(wage_two[0])
-print(wage_two[1])
+# display(wage_two[0])
+# print(wage_two[1])
