@@ -63,5 +63,67 @@ print(x)
 df3.to_csv("new.csv")
 
 
+# Inspecting DataFrame
+df5 = pd.read_csv("imdb.csv")
 
-# stopped at 6/15
+# head method reads only 5 rows, but we can give it argument
+print(f"\n{df5.head()}\n\n")
+print(f"\n{df5.head(10)}\n\n")
+
+# Getting info of DataFrame
+print(f"\n{df5.info()}\n\n")
+
+
+
+# Selecting multiple rows of DataFrame
+df6 = pd.DataFrame([
+  ['January', 100, 100, 23, 100],
+  ['February', 51, 45, 145, 45],
+  ['March', 81, 96, 65, 96],
+  ['April', 80, 80, 54, 180],
+  ['May', 51, 54, 54, 154],
+  ['June', 112, 109, 79, 129]],
+  columns=['month', 'clinic_east',
+           'clinic_north', 'clinic_south',
+           'clinic_west']
+)
+
+clinic_north_south = df6[["month", "clinic_north", "clinic_south"]]
+print(f"\n{clinic_north_south}\n")
+print(type(clinic_north_south))
+
+
+
+# Using iloc method to select specific row.
+# dataframes start from index 0 - same as lists and strings
+march = df6.iloc[2]
+print(f"\n{march}\n")
+print(type(march))
+
+
+# If we want to select multiple rows, we have to use slicing
+four = df6.iloc[:4]
+print(f"\n{four}\n")
+
+
+# Selecting rows, using logic
+march = df6[df6.month == "March"]
+print(f"\n{march}\n")
+
+spring = df6[(df6.month == "March") | (df6.month == "April") | (df6.month == "May")]
+print(f"\n{spring}\n")
+
+# isin method for easier search
+winter = df6[df6.month.isin(["February", "January"])]
+print(f"\n{winter}\n")
+
+
+# When we filter rows, we then sometimes have indices which are not sorted
+# So we can use reset_index to reset indices
+# This moves old indices into new column, if we do not need that, we can write: reset_index(drop=True)
+spring = spring.reset_index(drop=True)
+print(f"\n{spring}\n")
+
+# Code above created new dataframe, but if we want changes in same dataframe, we can write: inplace = True
+spring = spring.reset_index(drop=True, inplace=True)
+print(f"\n{spring}\n")
