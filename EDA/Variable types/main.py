@@ -69,3 +69,27 @@ print(df1)
 # cereal['shelf'] = pd.Categorical(cereal['shelf'], ['bottom', 'mid', 'top'], ordered=True)
 
 df1["rating"] = pd.Categorical(df1["rating"], ["NR", "G", "PG", "PG-13", "R"], ordered=True)
+
+
+
+
+census = pd.read_csv('census_data.csv', index_col=0)
+print(census.head())
+print(census.dtypes)
+
+census['birth_year'] = census['birth_year'].replace(['missing'], "1967")
+print(census['birth_year'].unique())
+
+census['birth_year'] = census['birth_year'].astype("int64")
+print(census['birth_year'].unique())
+
+print(census['birth_year'].mean())
+
+census["higher_tax"] = pd.Categorical(census["higher_tax"], ["strongly disagree", "disagree", "neutral", "agree", "strongly agree"], ordered=True)
+print(census["higher_tax"].unique())
+
+census['higher_tax'] = census['higher_tax'].cat.codes
+print(census['higher_tax'].median())
+
+census = pd.get_dummies(census, columns=['marital_status'])
+print(census.head())
