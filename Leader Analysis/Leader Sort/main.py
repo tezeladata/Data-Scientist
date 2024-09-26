@@ -3,11 +3,7 @@ import math
 
 with open("wages.json") as json_file:
     data = json.load(json_file)
-start_info = [[i["Name"], {"speed count sum": i["Speed 1 Count"] + i["Speed 2 Count"] * 2 + i["Speed 3 Count"] * 3, "Wage": i["Wage"]}, [i["Speed 1 Count"], i["Speed 2 Count"], i["Speed 3 Count"]]] for i in data]
-
-# with open("wages2.json") as json_file2:
-#     data2 = json.load(json_file2)
-# second_info = [[i["Name"], {"speed count sum": i["Speed 1 count"] + i["Speed 2 count"] * 2 + i["Speed 3 count"] * 3, "Wage": i["Wage"]}, [i["Speed 1 count"], i["Speed 2 count"], i["Speed 3 count"]]] for i in data2]
+start_info = [[i["Name"], {"speed count sum": i["Speed 1 count"] + i["Speed 2 count"] * 2 + i["Speed 3 count"] * 3, "Wage": i["Wage"]}, [i["Speed 1 count"], i["Speed 2 count"], i["Speed 3 count"]]] for i in data]
 
 '''
 speed count dependant renewing of wages
@@ -57,15 +53,27 @@ def generate_wages(matrix):
     return fin_info, f"Total wage increase is: {total_sum}"
 
 wage_one = generate_wages(start_info)
-# wage_two = generate_wages(second_info)
 
 
-def display(matrix):
-    for i in sorted(matrix, reverse=True, key=lambda x: x[1]["New wage"]):
-        print(i)
+def sort_by_increase(matrix):
+    return list(sorted(matrix, reverse=True, key=lambda x: x[1]["Wage increase"]))
 
-display(wage_one[0])
-print(wage_one[1])
-print("\n\n")
-# display(wage_two[0])
-# print(wage_two[1])
+new = sort_by_increase(wage_one[0])
+
+total_inc = 0
+
+with open("wage_changes.txt", "w", encoding="utf-8") as file:
+    for i in new:
+        inc = i[1]["Wage increase"]
+        old = i[1]["Old wage"]
+        new_wage = i[1]["New wage"]
+        total_inc += inc
+
+        if new_wage - old > 0:
+            message = f"{i[0]} - ძველი სახელფასო სისტემით სექტემბერს ხელფასი ექნებოდა {old} ლარი, ახალი სისტემის წყალობით მას გაუხდა {new_wage} ლარი, ანუ მისი ხელფასი გაიზარდა {new_wage - old} ლარით."
+        else:
+            message = f"{i[0]} - ძველი სახელფასო სისტემით სექტემბერს ხელფასი ექნებოდა {old} ლარი, ახალი სისტემის წყალობით მას გაუხდა {new_wage} ლარი, ანუ მისი ხელფასი შემცირდა {(new_wage - old) * -1} ლარით."
+
+        file.write(message + "\n")
+
+print(f"Sum of wage increase is: {total_inc}")
