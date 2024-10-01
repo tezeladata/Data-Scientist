@@ -3,7 +3,7 @@ import math
 
 with open("wages.json") as json_file:
     data = json.load(json_file)
-start_info = [[i["Name"], {"speed count sum": i["Speed 1 count"] + i["Speed 2 count"] * 2 + i["Speed 3 count"] * 3, "Wage": i["Wage"]}, [i["Speed 1 count"], i["Speed 2 count"], i["Speed 3 count"]]] for i in data]
+start_info = [[i["Name"], {"speed count sum": i["Speed 1 count"] + i["Speed 2 count"] * 2 + i["Speed 3 count"] * 3 + i["Speed 4 count"] * 4, "Wage": i["Wage"]}, [i["Speed 1 count"], i["Speed 2 count"], i["Speed 3 count"], i["Speed 4 count"]]] for i in data]
 
 '''
 speed count dependant renewing of wages
@@ -43,7 +43,7 @@ def generate_wages(matrix):
         elif speed_count <= 75: wage_per_speed = 9.5
         else: wage_per_speed = 9.75
 
-        new_wage = math.ceil(speeds[0] * wage_per_speed + speeds[1] * wage_per_speed * 2 + speeds[2] * wage_per_speed * 2.66)
+        new_wage = math.ceil(speeds[0] * wage_per_speed + speeds[1] * wage_per_speed * 2 + speeds[2] * wage_per_speed * 2.66 + speeds[3] * wage_per_speed * 3.33)
         wage_diff = new_wage - leader[1]["Old wage"]
         total_sum += wage_diff
         leader[1]["New wage"], leader[1]["Wage increase"] = new_wage, wage_diff
@@ -70,9 +70,9 @@ with open("wage_changes.txt", "w", encoding="utf-8") as file:
         total_inc += inc
 
         if new_wage - old > 0:
-            message = f"{i[0]} - ძველი სახელფასო სისტემით სექტემბერს ხელფასი ექნებოდა {old} ლარი, ახალი სისტემის წყალობით მას გაუხდა {new_wage} ლარი, ანუ მისი ხელფასი გაიზარდა {new_wage - old} ლარით."
+            message = f"{i[0]} - ძველი სახელფასო სისტემით სექტემბერს ხელფასი ექნებოდა {old} ლარი, ახალი სისტემის წყალობით მას გაუხდა {new_wage} ლარი, ანუ მისი ხელფასი გაიზარდა {new_wage - old} ლარით.\n"
         else:
-            message = f"{i[0]} - ძველი სახელფასო სისტემით სექტემბერს ხელფასი ექნებოდა {old} ლარი, ახალი სისტემის წყალობით მას გაუხდა {new_wage} ლარი, ანუ მისი ხელფასი შემცირდა {(new_wage - old) * -1} ლარით."
+            message = f"{i[0]} - ძველი სახელფასო სისტემით სექტემბერს ხელფასი ექნებოდა {old} ლარი, ახალი სისტემის წყალობით მას გაუხდა {new_wage} ლარი, ანუ მისი ხელფასი შემცირდა {(new_wage - old) * -1} ლარით.\n"
 
         file.write(message + "\n")
 
