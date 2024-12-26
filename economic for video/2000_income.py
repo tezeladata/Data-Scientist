@@ -1,6 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-import numpy as np  # Import numpy for median calculation
+import numpy as np
 
 # get dataset
 dataset = pd.read_csv('world_tourism_economy_data.csv')
@@ -37,7 +37,7 @@ def filter_countries(countries, incomes):
     res = {
         "Lower Income": len(lower),
         "Middle left Income": len(middle_left),
-        "middle right Income": len(middle_right),
+        "Middle right Income": len(middle_right),
         "Upper Income": len(upper)
     }
 
@@ -47,15 +47,13 @@ def filter_countries(countries, incomes):
 filter_res = filter_countries(countries_2000, income_2000)
 
 # visualization function
-def plot_dataset(fortitle, xrow_data, yrow_data):
-    plt.figure(figsize=(12, 8))
-    plt.bar(xrow_data, yrow_data, color="darkgreen", edgecolor="black")
-    plt.ylabel("Country count", fontsize=14)
-    plt.xlabel("Income groups", fontsize=14)
-    plt.title(fortitle, fontsize=20)
-    plt.grid(axis="y", linestyle="--", alpha=1)
+def plot_pie_chart(fortitle, labels, sizes):
+    plt.figure(figsize=(10, 7))
+    plt.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=140, colors=["#18392b", "#14452f", "#0a5c36", "#1d2e28"])
+    plt.title(fortitle, fontsize=16)
+    plt.axis('equal')
     plt.tight_layout()
     plt.show()
 
 # Call the function with updated parameters
-plot_dataset("Number of countries in four groups by their tourist income", [i for i in filter_res.keys()], filter_res.values())
+plot_pie_chart("Proportion of countries in four groups by their tourist income", list(filter_res.keys()), list(filter_res.values()))
